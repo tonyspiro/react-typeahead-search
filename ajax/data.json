@@ -1,0 +1,32 @@
+{
+  "items": [
+    {		
+      "slug" : "index",
+      "type" : "page",
+      "title": "Home",
+      "headline": "Awesome home page",
+      "content": "Here is some searchable content from the home page."
+    },
+    {
+      "slug" : "about",
+      "type" : "page",
+      "title": "About",
+      "headline": "Awesome about page",
+      "content": "Here is some searchable content from the about page."
+    },
+    {
+      "slug" : "events",
+      "type" : "page",
+      "title": "Events",
+      "headline": "Awesome events page",
+      "content": "Here is some searchable content from the events page."
+    },
+    {
+      "slug" : "contact",
+      "type" : "page",
+      "title": "Contact",
+      "headline": "Awesome contact page",
+      "content": "Here is some searchable content from the contact page."
+    }
+  ]
+}

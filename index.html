@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>React Modal Search App</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <style>
+    /* Reset
+    ==================== */
+    ul,li{
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    /* Styles
+    ==================== */
+    .btn-search{
+      margin-top: 50px;
+    }
+    #searchModal #search-results.open ul {
+      padding: 10px;
+    }
+    #searchModal .result {
+      color: #000000;
+      padding: 10px 10px 30px;
+      display: block;
+    }
+    #searchModal .result:hover {
+      background-color: #ececec;
+    }
+    #searchModal .result.active {
+      background-color: #939598;
+      color: #ffffff;
+    }
+    #searchModal .result .title{
+      margin-left: 20px;
+    }
+    #search {
+      width: 100%;
+      height: 60px;
+      font-size: 26px;
+      padding: 10px;
+    }
+    </style>
+  </head>
+  <body>
+    <div class="container text-center">
+
+      <!-- Button trigger modal -->
+      <button type="button" class="btn-search btn btn-primary btn-lg" data-toggle="modal" data-target="#searchModal">
+        Show Search Modal
+      </button>
+
+    </div>
+    <div class="modal fade" id="searchModal">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <input id="search" type="text" placeholder="Start typing...">
+          <div id="search-results"></div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script src="http://fb.me/react-0.12.2.js"></script>
+    <script src="http://fb.me/JSXTransformer-0.12.2.js"></script>
+    <script type="text/jsx" src="search.js"></script>
+  </body>
+</html>
