@@ -1,32 +1,54 @@
 {
-  "items": [
-    {		
-      "slug" : "index",
-      "type" : "page",
-      "title": "Home",
-      "headline": "Awesome home page",
-      "content": "Here is some searchable content from the home page."
-    },
-    {
-      "slug" : "about",
-      "type" : "page",
-      "title": "About",
-      "headline": "Awesome about page",
-      "content": "Here is some searchable content from the about page."
-    },
-    {
-      "slug" : "events",
-      "type" : "page",
-      "title": "Events",
-      "headline": "Awesome events page",
-      "content": "Here is some searchable content from the events page."
-    },
-    {
-      "slug" : "contact",
-      "type" : "page",
-      "title": "Contact",
-      "headline": "Awesome contact page",
-      "content": "Here is some searchable content from the contact page."
-    }
-  ]
+    "items": [
+        {
+            "slug": "index",
+            "type": "page",
+            "title": "Home",
+            "icon": "fa-file-o",
+            "content": "Here is some searchable content from the home page."
+        },
+        {
+            "slug": "about",
+            "type": "page",
+            "title": "About",
+            "icon": "fa-file-o",
+            "content": "Here is some searchable content from the about page."
+        },
+        {
+            "slug": "contact",
+            "type": "page",
+            "title": "Contact",
+            "icon": "fa-file-o",
+            "headline": "Lots of Living Room",
+            "content": "Here is some searchable content from the contact page."
+        },
+        {
+            "slug": "events",
+            "type": "page",
+            "title": "Events",
+            "icon": "fa-calendar-o",
+            "content": "Here is some searchable content from the events page."
+        },
+        {
+            "slug": "event",
+            "type": "page",
+            "title": "Single Event",
+            "icon": "fa-calendar-o",
+            "content": "Here is some searchable content from the single event page."
+        },
+        {
+            "slug": "news",
+            "type": "page",
+            "icon": "fa-newspaper-o",
+            "title": "News",
+            "content": "Here is some searchable content from the main news page."
+        },
+        {
+            "slug": "article",
+            "type": "article",
+            "icon": "fa-newspaper-o",
+            "title": "Single Article",
+            "content": "Here is some searchable content from a news article page."
+        }
+    ]
 }

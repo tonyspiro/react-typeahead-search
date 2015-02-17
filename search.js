@@ -29,6 +29,19 @@ $('#searchModal').on('shown.bs.modal', function(){
         
           var q = $(this).val();
 
+          // Set min length
+          if(q.length < 2){
+            
+            _this.setState({
+              data : {
+                items: []
+              }
+            });
+             $('#search-results').removeClass('open');
+            return true;
+
+          }
+
           var items = data.items;
           var newItems = [];
           
@@ -156,7 +169,7 @@ $('#searchModal').on('shown.bs.modal', function(){
         <li>
           <a href={item.slug} className="result" id={"result-" + id} data-id={id}>
             <div className="pull-left icon">
-              <i className="fa fa-file-o"></i>
+              <i className={"fa " + item.icon}></i>
             </div>
             <div className="pull-left title">
               {item.title}
