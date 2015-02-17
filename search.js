@@ -29,19 +29,6 @@ $('#searchModal').on('shown.bs.modal', function(){
         
           var q = $(this).val();
 
-          // Set min length
-          if(q.length < 2){
-            
-            _this.setState({
-              data : {
-                items: []
-              }
-            });
-             $('#search-results').removeClass('open');
-            return true;
-
-          }
-
           var items = data.items;
           var newItems = [];
           
