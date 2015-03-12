@@ -1,54 +1,40 @@
 {
     "items": [
         {
-            "slug": "index",
-            "type": "page",
-            "title": "Home",
-            "icon": "fa-file-o",
-            "content": "Here is some searchable content from the home page."
+            "link": "http://github.com",
+            "title": "Github",
+            "icon": "fa-github",
+            "content": "GitHub is the best place to build software together. Over 4 million people use GitHub to share code."
         },
         {
-            "slug": "about",
-            "type": "page",
-            "title": "About",
-            "icon": "fa-file-o",
-            "content": "Here is some searchable content from the about page."
+            "link": "http://stackoverflow.com",
+            "title": "Stack Overflow",
+            "icon": "fa-stack-overflow",
+            "content": "Q & A for professional and enthusiast programmers."
         },
         {
-            "slug": "contact",
-            "type": "page",
-            "title": "Contact",
-            "icon": "fa-file-o",
-            "headline": "Lots of Living Room",
-            "content": "Here is some searchable content from the contact page."
+            "link": "http://piedpiper.com",
+            "title": "Pied Piper",
+            "icon": "fa-pied-piper",
+            "content": "Silicon Valley on HBO."
         },
         {
-            "slug": "events",
-            "type": "page",
-            "title": "Events",
-            "icon": "fa-calendar-o",
-            "content": "Here is some searchable content from the events page."
+            "link": "http://slack.com",
+            "title": "Slack",
+            "icon": "fa-slack",
+            "content": "Slack brings all your communication together in one place. It’s real-time messaging, archiving and search for modern teams."
         },
         {
-            "slug": "event",
-            "type": "page",
-            "title": "Single Event",
-            "icon": "fa-calendar-o",
-            "content": "Here is some searchable content from the single event page."
+            "link": "https://medium.com",
+            "title": "Medium",
+            "icon": "fa-medium",
+            "content": "A magazine for a generation who grew up not caring about magazines."
         },
         {
-            "slug": "news",
-            "type": "page",
-            "icon": "fa-newspaper-o",
-            "title": "News",
-            "content": "Here is some searchable content from the main news page."
-        },
-        {
-            "slug": "article",
-            "type": "article",
-            "icon": "fa-newspaper-o",
-            "title": "Single Article",
-            "content": "Here is some searchable content from a news article page."
+            "link": "https://stripe.com",
+            "icon": "fa-cc-stripe",
+            "title": "Stripe",
+            "content": "Stripe is a suite of APIs that powers commerce for businesses of all sizes."
         }
     ]
 }

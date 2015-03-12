@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <style>
+    body{
+      font-size: 15px;
+    }
     /* Reset
     ==================== */
     ul,li{
@@ -21,29 +24,39 @@
     .btn-search{
       margin: 50px 0;
     }
+    #searchModal .modal-content{
+      -moz-border-radius: 0 !important;
+      -webkit-border-radius: 0 !important;
+      border-radius: 0 !important;
+    }
     #searchModal #search-results.open ul {
       padding: 10px;
     }
     #searchModal .result {
       color: #000000;
-      padding: 10px 10px 30px;
+      padding: 10px 20px;
       display: block;
     }
     #searchModal .result:hover {
       background-color: #ececec;
     }
     #searchModal .result.active {
-      background-color: #ccc;
-      color: #ffffff;
+      background-color: #F4F4F4;
     }
     #searchModal .result .title{
       margin-left: 20px;
     }
     #search {
       width: 100%;
-      height: 60px;
       font-size: 26px;
       padding: 10px;
+      border: none;
+    }
+    #searchModal b{
+      color: #00BBFF
+    }
+    #searchModal .description{
+      font-size: 13px;
     }
     </style>
   </head>
@@ -62,7 +75,7 @@
     <div class="modal fade" id="searchModal">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
-          <input id="search" type="text" placeholder="Start typing about, contact or home...">
+          <input id="search" type="text" placeholder="Start typing...">
           <div id="search-results"></div>
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
