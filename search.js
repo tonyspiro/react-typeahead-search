@@ -39,8 +39,11 @@ $('#searchModal').on('shown.bs.modal', function(){
             var qLower = q.toLowerCase();
             var titleLower = item.title.toLowerCase();
             var contentLower = item.content.toLowerCase();
+            var formattedTitle = highlight(item.title, q);
             var formattedContent = highlight(item.content, q);
+            
             item.formattedContent = formattedContent;
+            item.formattedTitle = formattedTitle;
             
             // Add custom search criteria here
             if(titleLower.indexOf(qLower)!==-1 || 
@@ -160,7 +163,7 @@ $('#searchModal').on('shown.bs.modal', function(){
           <a target="_blank" href={item.link} className="result" id={"result-" + id} data-id={id}>
             <i className={"fa " + item.icon}></i>
             &nbsp;&nbsp;&nbsp;
-            {item.title}
+            <span className="description" dangerouslySetInnerHTML={{__html: item.formattedTitle}}></span>
             <br/>
             <span className="description" dangerouslySetInnerHTML={{__html: item.formattedContent}}></span>
           </a>
