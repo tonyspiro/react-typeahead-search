@@ -162,7 +162,6 @@ $('#searchModal').on('shown.bs.modal', function(){
               {item.title}
             </div>
           </a>
-          <div className="clearfix"></div>
         </li>
       );
     }
