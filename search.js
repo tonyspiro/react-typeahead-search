@@ -21,7 +21,8 @@ $('#searchModal').on('shown.bs.modal', function(){
       
       // We'll need to use the global this later, store lika dis
       var _this = this;
-      var url = 'ajax/data.json';
+      var date = new Date();
+      var url = 'ajax/data.json?time=' + date.getTime(); // for yo cache
 
       $.getJSON(url, function(data){
         
@@ -38,6 +39,11 @@ $('#searchModal').on('shown.bs.modal', function(){
             var qLower = q.toLowerCase();
             var titleLower = item.title.toLowerCase();
             var contentLower = item.content.toLowerCase();
+            var formattedTitle = highlight(item.title, q);
+            var formattedContent = highlight(item.content, q);
+            
+            item.formattedContent = formattedContent;
+            item.formattedTitle = formattedTitle;
             
             // Add custom search criteria here
             if(titleLower.indexOf(qLower)!==-1 || 
@@ -100,7 +106,7 @@ $('#searchModal').on('shown.bs.modal', function(){
 
             case 13: // enter
             var link = $('#search-results .result.active').attr('href');
-            window.location.href = link;
+            window.open(link, '_blank');
             break;
 
             default: return; // exit this handler for other keys
@@ -151,16 +157,15 @@ $('#searchModal').on('shown.bs.modal', function(){
 
       var item = this.props.item;
       var id = this.props.id;
-
+      
       return (
         <li>
-          <a href={item.slug} className="result" id={"result-" + id} data-id={id}>
-            <div className="pull-left icon">
-              <i className={"fa " + item.icon}></i>
-            </div>
-            <div className="pull-left title">
-              {item.title}
-            </div>
+          <a target="_blank" href={item.link} className="result" id={"result-" + id} data-id={id}>
+            <i className={"fa " + item.icon}></i>
+            &nbsp;&nbsp;&nbsp;
+            <span className="description" dangerouslySetInnerHTML={{__html: item.formattedTitle}}></span>
+            <br/>
+            <span className="description" dangerouslySetInnerHTML={{__html: item.formattedContent}}></span>
           </a>
         </li>
       );
@@ -170,3 +175,11 @@ $('#searchModal').on('shown.bs.modal', function(){
   React.render(<SearchList />, document.getElementById('search-results'));
 
 }); // modal opened
+
+function preg_quote( str ) {
+  return (str+'').replace(/([\\\.\+\*\?\[\^\]\$\(\)\{\}\=\!\<\>\|\:])/g, "\\$1");
+}
+
+function highlight(data, search){
+    return data.replace( new RegExp( "(" + preg_quote( search ) + ")" , 'gi' ), "<b>$1</b>" );
+}
