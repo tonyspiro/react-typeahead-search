@@ -1,38 +1,75 @@
 /* Search
 ==================================== */
 $('#searchModal').on('shown.bs.modal', function(){
-  
-  $(document).unbind('keydown');
-  
-  $('#search').focus();
 
-  // List component
-  var SearchList = React.createClass({
+  // Search Main
+  var SearchArea = React.createClass({
 
     // Gets initial state, duh
     getInitialState: function() {
       return {
-        data: []
+        data: {
+          items : []
+        }
       };
     },
 
-    // Checks for data loaded via ajax
-    componentDidMount: function() {
+    componentDidMount : function(url, _this, data){
       
-      // We'll need to use the global this later, store lika dis
-      var _this = this;
-      var date = new Date();
-      var url = 'ajax/data.json?time=' + date.getTime(); // for yo cache
+      $('#search').focus();
+    
+    },
 
-      $.getJSON(url, function(data){
+    getResults : function(e){
+
+      var _this = this;
+
+      var date = new Date();
+      var q = $('#search').val();
+      var api_url = this.props.api_url;
+      
+      switch(e.which) {
+              
+        case 38: // up
+        var currentId = $('#search-results .result.active').attr('data-id');
+        var prevId = parseInt(currentId, 10) - 1;
+        $('#search-results .result').removeClass('active');
+        if(!$('#search-results #result-' + prevId).length) return false;
+        $('#search-results #result-' + prevId).addClass('active');
+        break;
+
+        case 40: // down
+        if(!$('#search-results .result.active').length){
+          
+          $('#search-results .result').first().addClass('active');
+
+        } else {
+          
+          var currentId = $('#search-results .result.active').attr('data-id');
+          var nextId = parseInt(currentId, 10) + 1;
+          if(!$('#search-results #result-' + nextId).length) return false;
+          $('#search-results .result').removeClass('active');
+          $('#search-results #result-' + nextId).addClass('active');
         
-        $('#search').on('keyup', function(){
-        
-          var q = $(this).val();
+        }
+        break;
+
+        case 13: // enter
+        var link = $('#search-results .result.active').attr('href');
+        window.open(link);
+        break;
+
+        default: 
+
+        var q = $('#search').val();
+        var url = api_url + '?q=' + q + '&time=' + date.getTime(); // for yo cache
+
+        $.getJSON(url, function(data){
 
           var items = data.items;
           var newItems = [];
-          
+          var q = $('#search').val();
+
           // Do your searching here
           items.forEach(function(item, i){
             
@@ -75,60 +112,29 @@ $('#searchModal').on('shown.bs.modal', function(){
 
         });
 
-        /// Get arrow controls
-        $(document).on('keydown', function(e){
-          
-          switch(e.which) {
-            
-            case 38: // up
-            var currentId = $('#search-results .result.active').attr('data-id');
-            var prevId = parseInt(currentId, 10) - 1;
-            $('#search-results .result').removeClass('active');
-            if(!$('#search-results #result-' + prevId).length) return false;
-            $('#search-results #result-' + prevId).addClass('active');
-            break;
+        return; // exit this handler for other keys
+      }
+    },
 
-            case 40: // down
-            if(!$('#search-results .result.active').length){
-              
-              $('#search-results .result').first().addClass('active');
+    render : function(){
 
-            } else {
-              
-              var currentId = $('#search-results .result.active').attr('data-id');
-              var nextId = parseInt(currentId, 10) + 1;
-              if(!$('#search-results #result-' + nextId).length) return false;
-              $('#search-results .result').removeClass('active');
-              $('#search-results #result-' + nextId).addClass('active');
-            
-            }
-            break;
+      return (
+        <div>
+          <input id="search" onKeyDown={this.getResults} type="text" placeholder={this.props.placeholder} />
+          <SearchList items={this.state.data.items}/>
+        </div>
+      );
+    }
+  });
 
-            case 13: // enter
-            var link = $('#search-results .result.active').attr('href');
-            window.open(link, '_blank');
-            break;
-
-            default: return; // exit this handler for other keys
-          }
-          e.preventDefault(); // prevent the default action (scroll / move caret)
-        });
-
-        $('#searchModal').on('hidden.bs.modal', function(){
-          $('#search-results').removeClass('open');
-          $('#search-results ul').html('');
-          $('#search').val('');
-        });
-
-      }.bind(this));
-
-    },  
+  // List Component
+  var SearchList = React.createClass({
 
     render: function() {
 
       var rows;
-      var items = this.state.data.items;
-
+      var items = this.props.items;
+      
       if(items){
 
         rows = items.map(function(item, i) {
@@ -142,7 +148,7 @@ $('#searchModal').on('shown.bs.modal', function(){
       }
 
       return (
-        <ul>
+        <ul id="search-results">
           {rows}
         </ul>
       );
@@ -151,6 +157,7 @@ $('#searchModal').on('shown.bs.modal', function(){
 
   });
 
+  // List Item
   var ListItem = React.createClass({
 
     render : function(){
@@ -172,7 +179,8 @@ $('#searchModal').on('shown.bs.modal', function(){
     }
   });
 
-  React.render(<SearchList />, document.getElementById('search-results'));
+  React.render(<SearchArea api_url="api/data.json" placeholder="Search your favorite websites..." />, document.getElementById('search-area'));
+
 
 }); // modal opened
 
