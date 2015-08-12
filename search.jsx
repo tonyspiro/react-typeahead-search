@@ -6,7 +6,7 @@ $('#searchModal').on('shown.bs.modal', function(){
   var SearchArea = React.createClass({
 
     // Gets initial state
-    getInitialState: function() {
+    getInitialState: function(){
       return {
         data: {
           items: []
