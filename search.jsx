@@ -9,18 +9,18 @@ $('#searchModal').on('shown.bs.modal', function(){
     getInitialState: function() {
       return {
         data: {
-          items : []
+          items: []
         }
       };
     },
 
-    componentDidMount : function(url, _this, data){
+    componentDidMount: function(url, _this, data){
       
       $('#search').focus();
     
     },
 
-    getResults : function(e){
+    getResults: function(e){
 
       var _this = this;
 
@@ -104,7 +104,7 @@ $('#searchModal').on('shown.bs.modal', function(){
 
           if (_this.isMounted()){
             _this.setState({
-              data : {
+              data: {
                 items: newItems
               }
             });
@@ -116,7 +116,7 @@ $('#searchModal').on('shown.bs.modal', function(){
       }
     },
 
-    render : function(){
+    render: function(){
 
       return (
         <div>
@@ -160,7 +160,7 @@ $('#searchModal').on('shown.bs.modal', function(){
   // List Item
   var ListItem = React.createClass({
 
-    render : function(){
+    render: function(){
 
       var item = this.props.item;
       var id = this.props.id;
