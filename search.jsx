@@ -5,7 +5,7 @@ $('#searchModal').on('shown.bs.modal', function(){
   // Search Main
   var SearchArea = React.createClass({
 
-    // Gets initial state, duh
+    // Gets initial state
     getInitialState: function() {
       return {
         data: {
@@ -14,7 +14,7 @@ $('#searchModal').on('shown.bs.modal', function(){
       };
     },
 
-    componentDidMount: function(url, _this, data){
+    componentDidMount: function(){
       
       $('#search').focus();
     
